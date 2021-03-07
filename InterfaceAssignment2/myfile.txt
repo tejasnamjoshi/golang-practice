@@ -1,0 +1,1 @@
+Testing some interfaces and os.Args
