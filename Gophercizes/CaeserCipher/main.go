@@ -6,24 +6,34 @@ import (
 )
 
 func main() {
-	var input string
-	// var k int
-	fmt.Scanf("%s\n", &input)
-	// fmt.Scanf("%d\n", &k)
-	alphabetLower := "abcdefghijklmnopqrstuvwxyz"
-	alphabetUpper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	var _test, input string
+	var k int
+	fmt.Scanf("%s\n%s\n%d\n", &_test, &input, &k)
 
-	ret := ""
-	for _, ch := range input {
-		if strings.IndexRune(alphabetLower, ch) >= 0 {
-			ret += string(rotate(ch, 2, []rune(alphabetLower)))
-		} else if strings.IndexRune(alphabetUpper, ch) >= 0 {
-			ret += string(rotate(ch, 2, []rune(alphabetUpper)))
-		} else {
-			ret += string(ch)
-		}
-	}
-	fmt.Println(string(ret))
+	// alphabetLower := "abcdefghijklmnopqrstuvwxyz"
+	// alphabetUpper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+	// ret := ""
+	// for _, ch := range input {
+	// 	if strings.IndexRune(alphabetLower, ch) >= 0 {
+	// 		ret += string(rotate(ch, k, []rune(alphabetLower)))
+	// 	} else if strings.IndexRune(alphabetUpper, ch) >= 0 {
+	// 		ret += string(rotate(ch, k, []rune(alphabetUpper)))
+	// 	} else {
+	// 		ret += string(ch)
+	// 	}
+	// }
+	// fmt.Println(string(ret))
+	a := rotateUpper('Z', 2)
+	// rotateUpper('Z', 2)
+	fmt.Println(string(a))
+}
+
+func rotateUpper(r rune, d int) rune {
+	tmp := int(r) - 'A'
+	tmp = (tmp + d) % 26
+
+	return rune(tmp + 'A')
 }
 
 func rotate(s rune, delta int, key []rune) rune {
