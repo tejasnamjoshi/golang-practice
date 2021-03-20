@@ -21,6 +21,11 @@ func main() {
 
 	fmt.Printf("\n\nRecursion\n")
 	fib(input)
+
+	f := fibClosure()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
 }
 
 func fib(input int) {
@@ -40,4 +45,15 @@ func recFib(input int) int {
 	fmt.Println(input)
 
 	return recFib(input-1) + recFib(input-2)
+}
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibClosure() func() int {
+	a, b := 0, 1
+	fmt.Printf("%d %d ", a, b)
+	return func() int {
+		a, b = b, a+b
+		return b
+	}
 }
