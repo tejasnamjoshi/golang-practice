@@ -1,0 +1,27 @@
+[
+    { 
+        "name": "Dinesh", 
+        "location": "Pune", 
+        "empId": 1,
+        "role": "Manager"
+    },
+    { 
+        "name": "Sejuti",
+        "location": "Jaipur", 
+        "empId": 2,
+        "role": "Developer"
+    },
+    { 
+        "name": "Yogesh",
+        "location": "Pune", 
+        "empId": 3,
+        "role": "Team Lead"
+    },
+    { 
+        "name": "Tejas",
+        "location": "Pune", 
+        "empId": 4,
+        "role": "Sr Frontend Developer"
+
+    }
+]

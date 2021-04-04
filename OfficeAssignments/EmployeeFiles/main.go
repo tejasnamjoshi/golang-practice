@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 )
@@ -15,14 +16,20 @@ type Employee struct {
 
 func main() {
 	var empId rune
+	var f string
+	flag.StringVar(&f, "f", "emp.json", "Name of the file with employee records")
+	flag.Parse()
+
+	c, err := os.Open(f)
+	if err != nil {
+		fmt.Println("File not found.")
+		os.Exit(1)
+		// panic(err)
+	}
+	defer c.Close()
 
 	fmt.Print("Enter id of the employee to search :- ")
 	fmt.Scanf("%d", &empId)
-
-	c, err := os.Open("emp.json")
-	if err != nil {
-		panic(err)
-	}
 
 	var emp []Employee
 	d := json.NewDecoder(c)
