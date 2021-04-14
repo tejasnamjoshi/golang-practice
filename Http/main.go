@@ -21,13 +21,19 @@ func main() {
 	// resp.Body.Read(bs)
 	// fmt.Println(string(bs))
 
+	/* f implements Writer interface */
+	// f, err := os.Create("http_file2.html")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// io.Copy(f, resp.Body)
+
 	lw := logWritter{}
 	io.Copy(lw, resp.Body)
 }
 
 func (logWritter) Write(bs []byte) (int, error) {
-	err := os.WriteFile("http_file.html", bs, 0666)
-	if err != nil {
+	if err := os.WriteFile("http_file.html", bs, 0666); err != nil {
 		fmt.Println("ERROR: ", err)
 		return 0, err
 	}
